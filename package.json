@@ -1,0 +1,19 @@
+{
+  "name": "foodflow-monorepo",
+  "version": "1.0.0",
+  "description": "AI-Powered Food Surplus Redistribution Platform",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
