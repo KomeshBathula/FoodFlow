@@ -5,6 +5,7 @@ import { config } from "./config/env";
 import { requestLogger } from "./middleware/requestLogger";
 import { errorHandler } from "./middleware/errorHandler";
 import healthRouter from "./routes/health.routes";
+import authRouter from "./routes/auth.routes";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.use("/api/v1/health", healthRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.use(errorHandler);
 
