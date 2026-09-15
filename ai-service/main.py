@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import SERVICE_NAME, VERSION
+from routers.forecast import router as forecast_router
 
 app = FastAPI(
     title=SERVICE_NAME,
@@ -24,6 +25,8 @@ def health():
         "version": VERSION,
         "mode": "deterministic-prototype-baseline"
     }
+
+app.include_router(forecast_router)
 
 if __name__ == "__main__":
     import uvicorn
