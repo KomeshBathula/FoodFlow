@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPanel } from '../components/maps/MapPanel';
 import { StatusBadge } from '../components/common/StatusBadge';
+import { LiveTracker } from '../components/tracking/LiveTracker';
 
 export const DriverDashboard: React.FC = () => {
   const [taskStatus, setTaskStatus] = useState<"ASSIGNED" | "EN_ROUTE_TO_PICKUP" | "PICKED_UP" | "DELIVERED">("EN_ROUTE_TO_PICKUP");
@@ -14,8 +15,8 @@ export const DriverDashboard: React.FC = () => {
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ marginBottom: '20px' }}>
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Driver FastFleet Console</h1>
-        <p style={{ color: '#64748b' }}>Assigned food surplus pickups and turn-by-turn route tracking.</p>
+        <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Driver FastFleet Mobile Console</h1>
+        <p style={{ color: '#64748b' }}>Assigned food surplus pickups, active route navigation, and delivery proof.</p>
       </div>
 
       <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '20px', marginBottom: '20px' }}>
@@ -38,7 +39,7 @@ export const DriverDashboard: React.FC = () => {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
           <button
             onClick={handleStep}
             disabled={taskStatus === "DELIVERED"}
@@ -59,6 +60,8 @@ export const DriverDashboard: React.FC = () => {
             {taskStatus === "DELIVERED" && "Delivery Completed ✓"}
           </button>
         </div>
+
+        <LiveTracker />
       </div>
 
       <MapPanel />
