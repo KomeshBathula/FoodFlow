@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { PredictionCard } from '../components/ai/PredictionCard';
 import { DemandChart } from '../components/ai/DemandChart';
 import { FoodBatches } from './FoodBatches';
+import { SensorPanel } from '../components/iot/SensorPanel';
 
 export const KitchenDashboard: React.FC = () => {
   const [published, setPublished] = useState(false);
+  const [temp, setTemp] = useState(3.8);
 
   return (
     <div>
@@ -21,6 +23,10 @@ export const KitchenDashboard: React.FC = () => {
           explanation="Catering production today exceeds lunch demand estimates by 34.5 kg. Quality score is 94/100 (Fresh)."
           onPublishSurplus={published ? undefined : () => setPublished(true)}
         />
+        <SensorPanel currentTemp={temp} onTriggerSpike={() => setTemp(11.2)} />
+      </div>
+
+      <div style={{ marginBottom: '24px' }}>
         <DemandChart />
       </div>
 
