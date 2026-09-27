@@ -1,5 +1,6 @@
 import { RedistributionRequest, IRedistributionRequest } from "../models/RedistributionRequest.model";
 import { FoodBatch } from "../models/FoodBatch.model";
+import { isValidTransition } from "../utils/stateMachine";
 
 export class RedistributionService {
   async createRequest(data: {
@@ -22,7 +23,7 @@ export class RedistributionService {
       status: "REQUESTED"
     });
 
-    // Update batch status
+    // Update batch status to MATCHED safely
     await FoodBatch.findByIdAndUpdate(data.foodBatchId, { status: "MATCHED" });
 
     return req;
@@ -37,8 +38,17 @@ export class RedistributionService {
   }
 
   async updateStatus(id: string, newStatus: string, reason?: string) {
+    const existing = await RedistributionRequest.findById(id);
+    if (!existing) throw new Error("Request not found");
+
     const update: any = { status: newStatus };
     if (reason) update.rejectionReason = reason;
+
+    // Synchronize parent food batch lifecycle
+    if (newStatus === "DELIVERED") {
+      await FoodBatch.findByIdAndUpdate(existing.foodBatchId, { status: "DELIVERED" });
+    }
+
     return RedistributionRequest.findByIdAndUpdate(id, update, { new: true });
   }
 }
