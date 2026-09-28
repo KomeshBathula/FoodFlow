@@ -1,0 +1,30 @@
+name: FoodFlow CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Run Backend & Unit Tests
+      run: |
+        node tests/unit/auth.test.js
+        node tests/unit/foodBatch.test.js
+        node tests/unit/matching.test.js
+        node tests/unit/notifications.test.js
+        node tests/unit/cache.test.js
+        node tests/e2e/surplusRedistribution.test.js
+        node tests/integration/apiValidation.test.js
+        node tests/integration/rbacSecurity.test.js
