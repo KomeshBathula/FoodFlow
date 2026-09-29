@@ -1,0 +1,16 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FoodFlow API",
+    "version": "1.0.0",
+    "description": "Smart India Hackathon 2026 Prototype Contract"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health check",
+        "responses": { "200": { "description": "OK" } }
+      }
+    }
+  }
+}
