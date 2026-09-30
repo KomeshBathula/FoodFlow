@@ -1,0 +1,32 @@
+{
+  "city": "Bengaluru, Karnataka, India",
+  "kitchens": [
+    {
+      "name": "Annapurna Central Kitchen",
+      "address": "MG Road, Bengaluru",
+      "coordinates": { "lat": 12.9716, "lng": 77.5946 }
+    },
+    {
+      "name": "Taj Hospitality Hub",
+      "address": "Indiranagar, Bengaluru",
+      "coordinates": { "lat": 12.9784, "lng": 77.6408 }
+    }
+  ],
+  "ngos": [
+    {
+      "name": "FeedHope Distribution Hub",
+      "address": "Koramangala, Bengaluru",
+      "coordinates": { "lat": 12.9352, "lng": 77.6245 }
+    },
+    {
+      "name": "Roti Bank City Center",
+      "address": "Majestic, Bengaluru",
+      "coordinates": { "lat": 12.9767, "lng": 77.5713 }
+    },
+    {
+      "name": "Annam Shelter Kitchen",
+      "address": "Jayanagar, Bengaluru",
+      "coordinates": { "lat": 12.9250, "lng": 77.5938 }
+    }
+  ]
+}
